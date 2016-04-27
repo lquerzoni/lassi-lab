@@ -1,0 +1,6 @@
+%h2 Create New Movie
+ 
+= form_tag movies_path, :method => :post do
+ 
+  = render :partial => 'movie_form' 
+  = submit_tag 'Save Changes'
