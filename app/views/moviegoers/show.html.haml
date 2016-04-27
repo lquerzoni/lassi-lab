@@ -1,0 +1,13 @@
+%h2 Details about #{@user.name}
+ 
+%ul#details
+  %li
+    Provider:
+    = @user.provider
+  %li
+    UID:
+    = @user.uid
+ 
+= link_to 'Edit info', edit_moviegoer_path(@user)
+= link_to 'Delete', moviegoer_path(@user), :method => :delete
+= link_to 'Back to user list', moviegoers_path

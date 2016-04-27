@@ -1,0 +1,6 @@
+%h2 Create new user
+ 
+= form_tag moviegoers_path, :method => :post do
+ 
+  = render :partial => 'user_form' 
+  = submit_tag 'Save Changes'

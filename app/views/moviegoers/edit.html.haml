@@ -1,0 +1,7 @@
+%h2 Edit User
+ 
+= form_tag moviegoer_path(@user), :method => :put do
+ 
+  = render :partial => 'user_form' 
+
+  = submit_tag 'Save Changes'

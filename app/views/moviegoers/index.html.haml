@@ -1,0 +1,12 @@
+%h1 All Users
+ 
+%table#moviegoers
+  %thead
+    %tr
+      %th Username
+  %tbody
+    - @moviegoers.each do |user|
+      %tr
+        %td= user.name
+        %td= link_to "More about #{user.name}", moviegoer_path(user)
+= link_to 'Add new user', new_moviegoer_path
