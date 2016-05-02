@@ -1,0 +1,14 @@
+%h2 Add a comment
+
+= form_tag movie_reviews_path, :method => :post do
+
+  = label :review, :potatoes, 'Votes'
+  = select :review, :potatoes, [1,2,3,4,5]
+
+  = label :review, :comments, 'Comment'
+  = text_field :review, :comments
+
+  = label :review, :user, 'User'
+  = select :review, :moviegoer_id, @users.map {|u| [u.name,u.id] }
+  <br/><br/>
+  = submit_tag 'Add review'

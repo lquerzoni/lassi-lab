@@ -5,6 +5,7 @@
     %tr
       %th Movie Title
       %th Rating
+      %th Vote (reviews)
       %th Release Date
       %th More Info
   %tbody
@@ -12,6 +13,7 @@
       %tr
         %td= movie.title
         %td= movie.rating
+        %td #{movie.avg_reviews} (#{movie.reviews.count})
         %td= movie.release_date
-        %td= link_to "More about #{movie.title}", movie_path(movie)
-= link_to 'Add new movie', new_movie_path
+        %td= link_to "Details", movie_path(movie)
+#{link_to 'Add new movie', new_movie_path} - #{link_to 'User list', moviegoers_path}

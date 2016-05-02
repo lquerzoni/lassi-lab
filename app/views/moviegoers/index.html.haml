@@ -9,4 +9,5 @@
       %tr
         %td= user.name
         %td= link_to "More about #{user.name}", moviegoer_path(user)
-= link_to 'Add new user', new_moviegoer_path
+<br />
+#{link_to 'Add new user', new_moviegoer_path} - #{link_to 'Movie list', movies_path}

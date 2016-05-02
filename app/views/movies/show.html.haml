@@ -1,17 +1,27 @@
 %h2 Details about #{@movie.title}
  
 %ul#details
-  %li
-    Rating:
-    = @movie.rating
-  %li
-    Released on:
-    = @movie.release_date.strftime("%B %d, %Y")
- 
+	%li
+		Rating:
+		= @movie.rating
+	%li
+		Released on:
+		= @movie.release_date.strftime("%B %d, %Y")
+
 %h3 Description:
- 
+
 %p#description= @movie.description
 
-= link_to 'Edit info', edit_movie_path(@movie)
-= link_to 'Delete', movie_path(@movie), :method => :delete
-= link_to 'Back to movie list', movies_path
+%h3 Reviews:
+- if @movie.reviews.empty?
+	%p
+		No reviews for this movie...
+- else 
+	- @movie.reviews.each do |r|
+		- u = Moviegoer.find(r.moviegoer_id)
+		<b>#{r.potatoes}</b> (<i>#{Moviegoer.find(r.moviegoer_id).name}</i>) #{r.comments} <br />
+
+= link_to 'Add review', new_movie_review_path(@movie)
+<br/><br/>
+
+#{link_to 'Edit info', edit_movie_path(@movie)} - #{link_to 'Delete', movie_path(@movie), :method => :delete} - #{link_to 'Back to movie list', movies_path}
