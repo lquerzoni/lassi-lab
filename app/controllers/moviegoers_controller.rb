@@ -1,4 +1,7 @@
 class MoviegoersController < ApplicationController
+
+	before_action :authenticate_user!
+
 	def index
 		@moviegoers = Moviegoer.all
 	end
