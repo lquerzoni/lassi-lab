@@ -1,4 +1,5 @@
 class MoviegoersController < ApplicationController
+	
 	def index
 		@moviegoers = Moviegoer.all
 	end

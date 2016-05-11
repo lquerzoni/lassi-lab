@@ -46,5 +46,5 @@ group :development do
 end
 
 gem 'haml'
-
+gem 'devise'
 
