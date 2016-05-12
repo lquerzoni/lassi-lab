@@ -1,15 +1,16 @@
 class ReviewsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_moviegoer!
 	def new
 	end
 	
 	def create
 		id_movie = params[:movie_id]
 		@movie = Movie.find(id_movie)
-		@user = current_user
-		@review = @movie.reviews.create!(params[:review].permit(:potatoes, :comments))
-		@review.moviegoer = @user
-		flash[:notice] = "A review has from #{@user.name} been successfully added to #{@movie.title}."
+		@user = current_moviegoer
+		@review = @movie.reviews.create!(params[:review].permit(:potatoes, :comments, :moviegoer))
+		@review.moviegoer_id = @user.id
+		@review.save!
+		flash[:notice] = "A review has from #{@user.email} been successfully added to #{@movie.title}."
 		redirect_to movie_path(@movie)
 	end
 		

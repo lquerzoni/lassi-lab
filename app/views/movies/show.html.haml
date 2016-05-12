@@ -18,8 +18,8 @@
 		No reviews for this movie...
 - else 
 	- @movie.reviews.each do |r|
-		- u = Moviegoer.find(r.moviegoer_id)
-		<b>#{r.potatoes}</b> (<i>#{Moviegoer.find(r.moviegoer_id).name}</i>) #{r.comments} <br />
+		- u = Moviegoer.find_by_id(r.moviegoer_id)
+		<b>#{r.potatoes}</b> (<i>#{u.email}</i>) #{r.comments} <br />
 
 = link_to 'Add review', new_movie_review_path(@movie)
 <br/><br/>
