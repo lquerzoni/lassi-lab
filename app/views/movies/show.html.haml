@@ -19,7 +19,7 @@
 - else 
 	- @movie.reviews.each do |r|
 		- u = Moviegoer.find_by_id(r.moviegoer_id)
-		<b>#{r.potatoes}</b> (<i>#{u.email}</i>) #{r.comments} <br />
+		<b>#{r.potatoes}</b> (<i>#{u.email}</i>) #{r.comments} #{if u.email==current_moviegoer.email; link_to "Delete review", movie_review_path(:id => r.id, :movie_id => @movie.id), :method => :delete; end}<br />
 
 = link_to 'Add review', new_movie_review_path(@movie)
 <br/><br/>

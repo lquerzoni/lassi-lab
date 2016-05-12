@@ -16,9 +16,11 @@ class ReviewsController < ApplicationController
 		
 	def destroy
 		id = params[:id]
-		@movie = Movie.find(id)
-		@movie.destroy
-		flash[:notice] = "#{@movie.title} has been deleted."
-		redirect_to movies_path
+		id_movie = params[:movie_id]
+		@movie = Movie.find(id_movie)
+		@review = Review.find(id)
+		@review.destroy
+		flash[:notice] = "Your review has been deleted."
+		redirect_to movie_path(@movie)
 	end
 end
