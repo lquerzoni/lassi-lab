@@ -47,4 +47,4 @@ end
 
 gem 'haml'
 gem 'devise'
-
+gem 'canard'

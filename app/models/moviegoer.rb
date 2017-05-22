@@ -5,4 +5,5 @@ class Moviegoer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :reviews
 	has_many :movies, :through => :reviews
+  acts_as_user roles: [:moviegoer]
 end
