@@ -1,4 +1,4 @@
-class CreateMoviegoers < ActiveRecord::Migration
+class CreateMoviegoers < ActiveRecord::Migration[5.1]
   def change
     create_table :moviegoers do |t|
       t.string :name
