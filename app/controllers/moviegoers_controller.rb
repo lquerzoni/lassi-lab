@@ -13,7 +13,7 @@ class MoviegoersController < ApplicationController
 	end
 	
 	def create
-		@user = Moviegoer.create!(params[:moviegoer].permit(:name, :provider, :uid))
+		@user = Moviegoer.create!(params[:user].permit(:name, :provider, :uid))
 		flash[:notice] = "#{@user.name} was successfully created."
 		redirect_to moviegoers_path
 	end
