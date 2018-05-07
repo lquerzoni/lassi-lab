@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2016_04_27_125720) do
   create_table "reviews", force: :cascade do |t|
     t.integer "potatoes"
     t.text "comments"
+    t.integer "likes"
     t.integer "moviegoer_id"
     t.integer "movie_id"
     t.index ["movie_id"], name: "index_reviews_on_movie_id"

@@ -19,7 +19,11 @@
 - else 
 	- @movie.reviews.each do |r|
 		- u = Moviegoer.find(r.moviegoer_id)
-		<b>#{r.potatoes}</b> (<i>#{Moviegoer.find(r.moviegoer_id).name}</i>) #{r.comments} <br />
+		- if r.likes.present?
+			- likes=r.likes
+		- else
+			- likes=0
+		<b>#{r.potatoes}</b> (<i>#{Moviegoer.find(r.moviegoer_id).name}</i>) #{r.comments} - #{likes} Likes (#{link_to 'I Like', i_like_review_path(r.id)})<br />
 
 = link_to 'Add review', new_movie_review_path(@movie)
 <br/><br/>
