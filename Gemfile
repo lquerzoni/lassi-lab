@@ -51,5 +51,7 @@ group :development do
 end
 
 gem 'haml'
+gem 'devise'
+gem 'omniauth-facebook'
 
                      

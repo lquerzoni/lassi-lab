@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :user do
+    
+  end
     factory :movie do
         title "Back to the future"
         rating "PG-13"
