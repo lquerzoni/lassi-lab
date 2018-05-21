@@ -7,14 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if user_signed_in? %>
-		Logged in as <%= current_user.email%> [<%= link_to 'Logout', destroy_user_session_path, :method => :delete%>]
-	<% end %>
 	<% flash.each do |key, value| %>
 		<div class="alert alert-<%= key %>"><%= value %></div>
 	<% end %>
 
 <%= yield %>
+
+<br /><br />
+<% if moviegoer_signed_in? %>
+	Logged in as <%= current_moviegoer.email%> [<%= link_to 'Logout', destroy_moviegoer_session_path, :method => :delete%>]
+<% end %>
 
 </body>
 </html>
