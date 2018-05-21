@@ -16,15 +16,18 @@
 - if @movie.reviews.empty?
 	%p
 		No reviews for this movie...
-- else 
-	- @movie.reviews.each do |r|
-		- u = Moviegoer.find_by_id(r.moviegoer_id)
-		- if r.likes.present?
-			- likes=r.likes
-		- else
-			- likes=0
-		<b>#{r.potatoes}</b> (<i>#{u.email}</i>) #{r.comments} - #{likes} Likes (#{link_to 'I Like', i_like_review_path(:id => r.id, :movie_id => @movie.id)}) - #{if u.email==current_moviegoer.email; link_to "Delete review", movie_review_path(:id => r.id, :movie_id => @movie.id), :method => :delete; end}<br />
-
+- else
+	- if can? :read, Review
+		- @movie.reviews.each do |r|
+			- u = Moviegoer.find_by_id(r.moviegoer_id)
+			- if r.likes.present?
+				- likes=r.likes
+			- else
+				- likes=0
+			<b>#{r.potatoes}</b> (<i>#{u.email}</i>) #{r.comments} - #{likes} Likes (#{link_to 'I Like', i_like_review_path(:id => r.id, :movie_id => @movie.id)}) - #{if u.email==current_moviegoer.email; link_to "Delete review", movie_review_path(:id => r.id, :movie_id => @movie.id), :method => :delete; end}<br />
+	- else
+		<b>You don't have the rights to read reviews.</b>
+		
 = link_to 'Add review', new_movie_review_path(@movie)
 <br/><br/>
 
