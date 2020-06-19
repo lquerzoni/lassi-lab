@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'cancan/matchers'
 
 describe Canard::Abilities, '#moviegoers' do
-  let(:acting_moviegoer) { User.create(roles: %w(moviegoer)) }
+  let(:acting_moviegoer) { Moviegoer.create(roles_mask: %w(moviegoer)) }
   subject(:moviegoer_ability) { Ability.new(acting_moviegoer) }
 
   describe 'on Movie' do
